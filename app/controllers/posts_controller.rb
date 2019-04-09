@@ -24,8 +24,16 @@ class PostsController < ApplicationController
 	end
 
 	def update
-	  @post = Post.find(params[:id])
-	  @post.update(title: params[:title], description: params[:description])
-	  redirect_to post_path(@post)
+	#	byebug
+	   @post = Post.find(params[:id])
+	   @post.update(coupon_params)
+	   redirect_to post_path(@post)
 	end
+
+   private
+
+	 def coupon_params
+    params.require(:post).permit(:title,:description)
+	 end
+
 end

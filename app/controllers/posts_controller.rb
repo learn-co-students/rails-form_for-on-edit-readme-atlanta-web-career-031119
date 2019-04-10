@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
 	private
 
-	def param_lock(attrs)
-		params.require(:post).permit(attrs)
+	def param_lock(*attrs)
+		params.require(:post).permit(*attrs)
 	end
 end
